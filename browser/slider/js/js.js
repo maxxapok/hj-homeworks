@@ -3,14 +3,16 @@ console.log(imgArr);
 // let i = 0;
 const sliderImg = document.getElementById('slider');
 sliderImg.src = imgArr[0];
-setTimeout(() => {
+
   for (let i = 0; i < imgArr.length; ++i) {
+  	setTimeout(() => {
   	console.log(i);
     sliderImg.src = imgArr[i];
+    }, 2000);
   }
-  // if (i === imgArr.length - 1) {
-  //   i = 0;
-  // }
-}, 1000);
+  if (i === imgArr.length - 1) {
+    i = 0;
+  }
+
 
 
