@@ -11,13 +11,13 @@ function showNextPhoto() {
 galleryImg.src = imgArr[i + 1];
 i++;
 if (i >= imgArr.length - 1) {
-i = -1;
-}
+  i = -1;
+ }
 };
 function showPrevPhoto() {
-i--;
-if (i < 0) {
-i = imgArr.length - 1;
-}
-galleryImg.src = imgArr[i];
+ i--;
+ if (i < 0) {
+  i = imgArr.length - 1;
+ }
+ galleryImg.src = imgArr[i];
 };
