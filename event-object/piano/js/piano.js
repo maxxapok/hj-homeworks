@@ -8,33 +8,33 @@ const liCollection = document.getElementsByTagName('li');
 const changeRegister = document.getElementsByTagName('ul')[0]; 
 
 
-for (let i = 0; i < keysCollection.length; i++) {
-   keysCollection[i].src = middleArr[i]; 
+for (let i = 0; i < liCollection.length; i++) {
+    liCollection[i].addEventListener('click', function () {
+        makeSound(event, i);
+    });
 }
 
-function makeSound(event) {
-	console.log(event);
-    event.currentTarget.getElementsByTagName('audio')[0].play();
-    event.currentTarget.getElementsByTagName('audio')[0].currentTime = 0; 
-}
+function makeSound(event, i) {
+    let key = keysCollection[i];
+    // Key можно получить разными способами. Почему в зависимости от способа меняется звучание - 
+    //  в одних случаях (например, если key = keysCollection[0]) при нажатии новой клавиши предыдущая замолкает,
+     // в других нет (звук длится, как с педалью). От чего это зависит?
 
-function ifKeydown(event) {
-
-	if (event.altKey && event.repeat) {
+    if(event.altKey) {
         changeRegister.classList.remove('middle', 'lower');
         changeRegister.classList.add('higher');
-        for (let i = 0; i < keysCollection.length; i++) {
-    	    keysCollection[i].src = higherArr[i];
-    	} 
-    
-    } else if (event.shiftKey && event.repeat) {
+        key.src = higherArr[i];
+    } else if (event.shiftKey) {
         changeRegister.classList.remove('middle', 'higher');
         changeRegister.classList.add('lower');
-        for (let i = 0; i < keysCollection.length; i++) {
-        	keysCollection[i].src = lowerArr[i];
-        }
+        key.src = lowerArr[i];
+    } else {
+        changeRegister.classList.remove('lower', 'higher');
+        changeRegister.classList.add('middle');
+        key.src = middleArr[i];
     }
-}
+    key.play();
+};
 
 function ifKeyup() {
 	changeRegister.classList.remove('lower', 'higher');
@@ -44,10 +44,5 @@ function ifKeyup() {
 	}
 }
 
-document.addEventListener('keydown', ifKeydown);
-// document.removeEventListener('keyup', ifKeydown);
 document.addEventListener('keyup', ifKeyup);
 
-for (let el of liCollection) {
-	el.addEventListener('click', makeSound);
-}
