@@ -8,21 +8,6 @@ function showNavig(event) {
 	}
 }
 
-
-// const stringArr = [];
-
-// function showSecret(event) {
-//   stringArr.push(event.key);
-//   let stringFromArr = stringArr.join('');
-//   if (stringFromArr === "нетология" || stringFromArr === "ytnjkjubz") {
-//   	secret.classList.add('visible');
-//   }
-// }
-
-// Вопрос: как поймать ошибку, если начинаем вводить не те символы, и заставить вводить с начала?
-
-// Вариант 2:
-
 const rightStringArr = ['KeyY', 'KeyT', 'KeyN', 'KeyJ', 'KeyK', 'KeyJ', 'KeyU', 'KeyB', 'KeyZ'];
 let stringArr = [];
 let i = 0;
