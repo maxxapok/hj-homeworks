@@ -10,8 +10,10 @@ addBtn.addEventListener('click', addToCart);
 
 function addToCart(event) {
 cartPrice += parseInt(event.currentTarget.getAttribute('data-price'));
-// cartPrice = getPriceFormatted(event.currentTarget.getAttribute('data-price'));
-// А вот с этой функцией у меня почему-то не работает как надо
+
+// Куда и как нужно применить ф-ю getPriceFormatted? Работает так же и без следующей строки, если использован parseInt
+// cartTotalPrice.innerHTML = getPriceFormatted(cartPrice);
+
 itemsCount++;
 cartCount.innerHTML = itemsCount;
 cartTotalPrice.innerHTML = cartPrice;
