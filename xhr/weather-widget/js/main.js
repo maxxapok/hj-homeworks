@@ -5,12 +5,10 @@ request.send();
 request.addEventListener('load',onLoad);
 
 function onLoad() {
-if (request.status === 200) {
   const response = JSON.parse(request.responseText);
   setData(response);
-  }
 }
 
-document.body.addEventListener('click', function() {
+document.addEventListener('click', function() {
 	console.log('страница реагирует');
 });
