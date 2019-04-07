@@ -5,16 +5,15 @@ let itemsCount = 0;
 let cartPrice = 0;
 
 for (let addBtn of addBtnCollection) {
-addBtn.addEventListener('click', addToCart);
+  addBtn.addEventListener('click', addToCart);
 }
 
 function addToCart(event) {
-cartPrice += parseInt(event.currentTarget.getAttribute('data-price'));
-
-// Куда и как нужно применить ф-ю getPriceFormatted? Работает так же и без следующей строки, если использован parseInt
-// cartTotalPrice.innerHTML = getPriceFormatted(cartPrice);
-
-itemsCount++;
-cartCount.innerHTML = itemsCount;
-cartTotalPrice.innerHTML = cartPrice;
+    cartPrice += parseInt(event.currentTarget.getAttribute('data-price'));
+    cartTotalPrice.innerHTML = getPriceFormatted(cartPrice);
+    // раскомментила строку 13, с ней так же работает, как и без нее. 
+    // Потому что есть parseInt. Ф-я getPriceFormatted не делает погоды, а должна бы 
+  	itemsCount++;
+  	cartCount.innerHTML = itemsCount;
+  	cartTotalPrice.innerHTML = cartPrice;
 }
