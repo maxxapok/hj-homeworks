@@ -8,43 +8,63 @@ function Slider(container) {
   const first = container.querySelector('[data-action = first]');
   const last = container.querySelector('[data-action = last]');
 
-  next.addEventListener ('click', event => moveSlide(true));
-  prev.addEventListener('click', event => moveSlide(false));
-  first.addEventListener('click', event => moveToTheOtherEnd(true));
-  last.addEventListener('click', event => moveToTheOtherEnd(false));
+  next.addEventListener ('click', moveSlideForward);
+  // next.addEventListener ('click', checkSibling);
+  prev.addEventListener('click', moveSlideBack);
+  // prev.addEventListener('click', checkSibling);
+  first.addEventListener('click', moveToTheEnd);
+  // first.addEventListener('click', checkSibling);
+  last.addEventListener('click', moveToTheStart);
+  // last.addEventListener('click', checkSibling);
 
-  // next.addEventListener ('click', event => checkSiblings());
-  // prev.addEventListener ('click', event => checkSiblings());
-  // first.addEventListener ('click', event => checkSiblings());
-  // last.addEventListener ('click', event => checkSiblings());
+function moveSlideForward(event) {
+	moveSlide(true);
+};
+function moveSlideBack(event) {
+	moveSlide(false);
+};
+function moveToTheEnd(event) {
+	moveSlide(true);
+};
+function moveToTheStart(event) {
+	moveSlide(false);
+};
+  
+  const start = container.querySelector('.slide');
+  start.classList.add('slide-current');
+  prev.classList.add('disabled');
+  prev.removeEventListener('click', moveSlideBack);
 
-  container.querySelector('.slide').classList.add('slide-current');
-  // const currentSlide = container.querySelector('.slide-current');
-  // const slidesCollection = container.querySelectorAll('.slide');
 
   function moveSlide(isForward) {
     const currentSlide = container.querySelector('.slide-current');
     const activatedSlide = isForward ? currentSlide.nextElementSibling : currentSlide.previousElementSibling;
     currentSlide.classList.remove('slide-current');
     activatedSlide.classList.add('slide-current');
+    prev.classList.remove('disabled');
+    prev.addEventListener ('click', moveSlideBack);
 
-  //  if (!currentSlide.nextElementSibling) {
- 	// next.classList.add('disabled');
- 	// prev.classList.remove('disabled');
- 	// // next.addEventListener('click', null);
- 	// last.classList.add('disabled');
- 	// first.classList.remove('disabled');
- 	// // last.addEventListener('click', null);
-  //  }
-  //  if (!currentSlide.previousElementSibling) {
-  //  	next.classList.remove('disabled');
-  //  	prev.classList.add('disabled');
- 	// // prev.addEventListener('click', null);
- 	// first.classList.add('disabled');
- 	// last.classList.remove('disabled');
- 	// // first.addEventListener('click', null);
-  //  }
-  }
+// function checkSibling(event) {
+   if (!currentSlide.nextElementSibling && currentSlide.previousElementSibling) {
+ 	next.classList.add('disabled');
+ 	prev.classList.remove('disabled');
+ 	next.removeEventListener('click', moveSlideForward);
+ 	last.classList.add('disabled');
+ 	first.classList.remove('disabled');
+ 	first.addEventListener('click', moveToTheEnd)
+ 	last.removeEventListener('click', moveToTheStart);
+   }
+   if (!currentSlide.previousElementSibling && currentSlide.nextElementSibling) {
+   	next.classList.remove('disabled');
+   	prev.classList.add('disabled');
+ 	prev.addEventListener('click', moveSlideBack);
+ 	first.classList.add('disabled');
+ 	last.classList.remove('disabled');
+ 	first.removeEventListener('click', moveToTheEnd);
+ 	last.addEventListener('click', moveToTheStart);
+    }
+  // }
+}
   function moveToTheOtherEnd(isForward) {
   	const currentSlide = container.querySelector('.slide-current');
     const activatedSlide = isForward ? currentSlide.parentElement.firstElementChild : currentSlide.parentElement.lastElementChild;
