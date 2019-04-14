@@ -9,7 +9,7 @@ for (let i = 0; i < listArr.length; ++i) {
 
 const itemsCollection = document.querySelectorAll('ul.contacts-list li');
 for (let i = 0; i < listArr.length; ++i) {
-	itemsCollection[i].innerHTML = ('<strong>'+listArr[i].name+'</strong>');
+	itemsCollection[i].innerHTML = `<strong>${listArr[i].name}</strong>`;
 	itemsCollection[i].dataset.email = listArr[i].email;
 	itemsCollection[i].dataset.phone = listArr[i].phone;
 }

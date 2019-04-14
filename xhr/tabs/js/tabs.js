@@ -28,14 +28,9 @@ function onLoad(){
 	 preloader.classList.add('hidden');
   }
 
-document.addEventListener('DOMContentLoaded', getFirstView);
-function getFirstView() {
+document.addEventListener('DOMContentLoaded', function() {
 	const href = tabsCollection[0].href;
 	xhr.open("GET", href, true);
-	xhr.send();
-}
-
-// Что означает такая ошибка? Выдается при каждом показе содержимого таба, в том числе после первой загрузки страницы 
-// Ошибка синтаксического анализа XML: лишние данные после элемента документа
-// Адрес: file:///C:/Users/M/hj-homeworks/xhr/tabs/components/sms-tab.html
-// Строка 2, символ 1:
+    xhr.send();
+  }
+);

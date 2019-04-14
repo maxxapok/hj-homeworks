@@ -18,7 +18,7 @@ function onLoad (event) {
 
 	for (let i = 0; i < dataFromJsonArr.length; ++i) {
 	
-      booksCollection[i].innerHTML = '<img src= '+dataFromJsonArr[i].cover.small+'>';
+      booksCollection[i].innerHTML = `<img src= ${dataFromJsonArr[i].cover.small}>`;
       booksCollection[i].dataset.title = dataFromJsonArr[i].title
       booksCollection[i].dataset.author = dataFromJsonArr[i].author.name;
       booksCollection[i].dataset.info = dataFromJsonArr[i].info;
