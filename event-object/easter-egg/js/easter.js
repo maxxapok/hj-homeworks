@@ -8,22 +8,15 @@ function showNavig(event) {
 	}
 }
 
-const rightStringArr = ['KeyY', 'KeyT', 'KeyN', 'KeyJ', 'KeyK', 'KeyJ', 'KeyU', 'KeyB', 'KeyZ'];
-let stringArr = [];
-let i = 0;
+const rightString = 'KeyYKeyTKeyNKeyJKeyKKeyJKeyUKeyBKeyZ';
+let keyString = '';
 function showSecret(event) {
-  stringArr.push(event.code);
-  console.log(event.code);
-	if (stringArr[i] !== rightStringArr[i]) {
-		alert('попробуй еще раз');
-		// Try - catch же здесь не подойдет? А ретерн нужен?
-		stringArr = [];
-		i = 0;
-		// return;
+	if (rightString.includes(keyString)) {
+		keyString += event.code;
 	} else {
-	  ++i;	
+		keyString = '';
+	}
+	if (keyString === rightString) {
+	secret.classList.add('visible');	
   }
-  if (stringArr.join('') === rightStringArr.join('')) {
-  		secret.classList.add('visible');
-  }
-}	
+}
