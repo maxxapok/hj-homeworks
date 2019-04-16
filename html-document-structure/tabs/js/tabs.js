@@ -47,7 +47,6 @@ function showActiveTab(event) {
 		articlesCollection[i].classList.remove('hidden')
 	  }
 	}
-	// Чета многоватенько циклов в функции, вы не находите?
+	// Смущает большое количество циклов в функции
 }
 
-// Маааать я заеблась!!
