@@ -29,3 +29,27 @@ function moveToDoneList(event) {
 }
 
 // 2 раза лейблы перемещается из одного списка в другой и обратно, а третий раз уже нет, почему?
+
+
+
+
+
+// Второй вариант решения, тоже с косяком, работает со второго клика, а не с первого:
+
+// const sectionsCollection = document.querySelector('.todo-list');
+// const doneList = sectionsCollection.querySelector('.done');
+// const undoneList = sectionsCollection.querySelector('.undone');
+
+// const LabelsCollection = sectionsCollection.querySelectorAll('label');
+
+// for (let item of LabelsCollection) {
+// 	const itemInput = item.querySelector('input');
+// 	itemInput.addEventListener('click', moveToList);
+// }
+
+// function moveToList(event) {
+// 	console.log(event.currentTarget.checked);
+
+// 	event.currentTarget.checked ? undoneList.appendChild(event.currentTarget.parentNode) : doneList.appendChild(event.currentTarget.parentNode);
+// 	event.currentTarget.checked ? event.currentTarget.removeAttribute('checked') : event.currentTarget.setAttribute('checked', true);
+// }

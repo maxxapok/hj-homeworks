@@ -11,6 +11,7 @@ tabsContainer.appendChild(tab);
 
 tab.firstElementChild.innerHTML = item.dataset.tabTitle;
 tab.firstElementChild.classList.add(item.dataset.tabIcon);
+// console.log(tab.firstElementChild.classList);
  
  // Как отобразить иконки???
 }
