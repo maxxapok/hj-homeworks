@@ -6,6 +6,7 @@ const xhr = new XMLHttpRequest();
 for (let item of tabsCollection) {
 	item.addEventListener('click', selectActive);
 }
+// tabsCollection[0].click();
 
 function selectActive(event) {
 if (event.currentTarget.classList.contains('active')) {
@@ -27,6 +28,8 @@ function onLoad(){
 	activeTabContent.innerHTML = xhr.response;
 	 preloader.classList.add('hidden');
   }
+
+// document.addEventListener('DOMContentLoaded', tabsCollection[0].click());
 
 // Это бывшая функция getFirstView, от которой не удалось избавиться, ныне безымянная)
 document.addEventListener('DOMContentLoaded', function() {
