@@ -30,9 +30,11 @@ function onLoad(){
   }
 
 // document.addEventListener('DOMContentLoaded', tabsCollection[0].click());
-// document.addEventListener('DOMContentLoaded', () => { tabsCollection[0].click(); }) 
+// document.addEventListener(‘DOMContentLoaded’, () => {
+// tabsCollection[0].click();
+// })
 
-// // Это бывшая функция getFirstView, от которой не удалось избавиться, ныне безымянная)
+// Это бывшая функция getFirstView, от которой не удалось избавиться, ныне безымянная)
 document.addEventListener('DOMContentLoaded', function() {
 	const href = tabsCollection[0].href;
 	xhr.open("GET", href, true);

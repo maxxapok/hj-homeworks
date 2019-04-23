@@ -1,38 +1,23 @@
-const fieldset = document.querySelector('.list-block');
-const inputCollection = document.querySelectorAll('[type = checkbox]');
-const outputText = document.querySelector('output');
-let counter = 0;
+'use strict'
 
-  for (let item of inputCollection) {
-    item.addEventListener('input', getChecked);
-  }; 
+const sectionsCollection = document.querySelector('.todo-list');
+const doneList = sectionsCollection.querySelector('.done');
+const undoneList = sectionsCollection.querySelector('.undone');
 
-function getChecked(event) {
-if (event.currentTarget.checked) {
-	counter ++;
-	} else {
-		counter --;
-	}
-outputText.value = counter + " of " + inputCollection.length;
-ifCompleted();
+const LabelsCollection = sectionsCollection.querySelectorAll('label');
+
+for (let item of LabelsCollection) {
+	const itemInput = item.querySelector('input');
+	itemInput.addEventListener('click', moveToList);
 }
 
-  document.addEventListener('DOMContentLoaded', showCounter);
+function moveToList(event) {
+	event.currentTarget.parentNode.parentNode.classList.contains('done') ?
+		undoneList.appendChild(event.currentTarget.parentNode) :
+		doneList.appendChild(event.currentTarget.parentNode);
+}
 
-  function showCounter(event) {
-  	for (let item of inputCollection) {
-  		if (item.checked) {
-  			counter++;
-  		}
-  	}
-  	outputText.value = counter + " of " + inputCollection.length;
-  	ifCompleted();
-  }
 
-  function ifCompleted() {
-  	if (counter === inputCollection.length) {
-  		fieldset.classList.add('complete');
-  	} else {
-  		fieldset.classList.remove('complete');
-  	}
-  }
+
+
+
