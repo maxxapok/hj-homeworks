@@ -1,23 +1,42 @@
 'use strict'
+const listBlock = document.querySelector('.list-block'),
+lies = document.querySelectorAll('.list-block li'),
+checkboxes = document.querySelectorAll('.list-block input[type="checkbox"]'),
+output = document.querySelector('.list-block output'),
+checksAll = checkboxes.length;
+let i = 0;
 
-const sectionsCollection = document.querySelector('.todo-list');
-const doneList = sectionsCollection.querySelector('.done');
-const undoneList = sectionsCollection.querySelector('.undone');
 
-const LabelsCollection = sectionsCollection.querySelectorAll('label');
-
-for (let item of LabelsCollection) {
-	const itemInput = item.querySelector('input');
-	itemInput.addEventListener('click', moveToList);
+for (let checkbox of checkboxes){
+	checkbox.addEventListener('change', change);
 }
 
-function moveToList(event) {
-	event.currentTarget.parentNode.parentNode.classList.contains('done') ?
-		undoneList.appendChild(event.currentTarget.parentNode) :
-		doneList.appendChild(event.currentTarget.parentNode);
+document.addEventListener("DOMContentLoaded", count);
+function count() {
+	for(let checkbox of checkboxes){
+		if (checkbox.checked){
+			i++;
+		}
+	}
+	output.value = i +' из '+ checksAll;
+	done();
 }
 
+function change (event) {
+	 if (event.currentTarget.checked) {
+	 	i++;
+	 } else {
+	 	i--;
+	 }
+   output.value = i +' из '+ checksAll;
+   done(); 
+}
 
-
-
+function done() {
+	if (i === checksAll) {
+		listBlock.classList.add('complete');
+	} else {
+		listBlock.classList.remove('complete');
+	}
+}
 
