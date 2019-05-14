@@ -1,38 +1,22 @@
-// 'use strict';
+'use strict';
+const sectionLongPooling = document.querySelector('.long-pooling');
 
-// function selectNumberPool(el) {
-// 	const divCollection = document.querySelectorAll('.pooling div');
-	
-// 	for (let item of divCollection) {
-	
-// 		item.classList.remove('flip-it');
-// 		if (item.innerText == el) {
-// 			item.classList.add('flip-it');
-// 		}
-// 	  }
-// 	}
+const numbers = sectionLongPooling.querySelectorAll('div');
 
-//   function subscribe() {
-//     var xhr = new XMLHttpRequest();
-//     xhr.onreadystatechange = function() {
-//       if (this.readyState != 4) return;
+subscribe()
 
-//       if ((this.status >= 200) && (this.status < 300)) {
-      
-//         selectNumberPool(parseInt(this.responseText));
-//         subscribe();
-//         return;
-//       }
-
-//       if (this.status != 502) {
-//       	console.log(this.responseText);
-//       }
-
-//       setTimeout(subscribe, 1000);
-//     }
-//     xhr.open("GET", 'https://neto-api.herokuapp.com/comet/long-pooling', true);
-//     xhr.send();
-//   }
-
-//   subscribe();
+function subscribe(url){  
+  const xhr = new XMLHttpRequest();
+  xhr.addEventListener('load', () => {
+    for(const number of numbers){
+      number.classList.remove('flip-it');
+      if(+number.textContent === JSON.parse(xhr.response)){
+        number.classList.add('flip-it');
+      }
+    }
+    subscribe()
+  })
+  xhr.open('GET', 'https://neto-api.herokuapp.com/comet/long-pooling');
+  xhr.send()
+}
 
