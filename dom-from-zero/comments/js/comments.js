@@ -1,4 +1,3 @@
-
 // 'use strict';
 
 // function showComments(list) {
@@ -34,64 +33,64 @@
 "use strict";
 
 function showComments(list) {
-  const commentsContainer = document.querySelector(".comments");
-  const commentNodes = list.map(createComment);
-  const fragment = commentNodes.reduce((fragment, currentValue) => {
-    fragment.appendChild(currentValue);
-    return fragment;
-  }, document.createDocumentFragment());
+    const commentsContainer = document.querySelector(".comments");
+    const commentNodes = list.map(createComment);
+    const fragment = commentNodes.reduce((fragment, currentValue) => {
+        fragment.appendChild(currentValue);
+        return fragment;
+    }, document.createDocumentFragment());
 
-  commentsContainer.appendChild(fragment);
+    commentsContainer.appendChild(fragment);
 }
 
 function createComment(comment) {
-  const photo = document.createElement("div");
-  photo.className = "photo";
-  photo.setAttribute("title", comment.author.name);
+    const photo = document.createElement("div");
+    photo.className = "photo";
+    photo.setAttribute("title", comment.author.name);
 
-  const avatar = document.createElement("div");
-  avatar.className = "avatar";
-  avatar.style.backgroundImage = `url(${comment.author.pic})`;
-  photo.appendChild(avatar);
+    const avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.style.backgroundImage = `url(${comment.author.pic})`;
+    photo.appendChild(avatar);
 
-  const commentText = document.createElement("p");
-  commentText.className = "comment-text";
-  commentText.innerText = `${comment.text.split('\n').join('<br>')}`;
+    const commentText = document.createElement("p");
+    commentText.className = "comment-text";
+    commentText.innerText = `${comment.text.split('\n').join('<br>')}`;
 
-  const commentDate = document.createElement("div");
-  commentDate.className = "comment-date";
-  commentDate.innerText = new Date(comment.date).toLocaleString('ru-Ru');
+    const commentDate = document.createElement("div");
+    commentDate.className = "comment-date";
+    commentDate.innerText = new Date(comment.date).toLocaleString('ru-Ru');
 
-  const complainLi = document.createElement("li");
-  complainLi.className = "complain";
-  complainLi.innerText = "Пожаловаться";
+    const complainLi = document.createElement("li");
+    complainLi.className = "complain";
+    complainLi.innerText = "Пожаловаться";
 
-  const replyLi = document.createElement("li");
-  replyLi.className = "reply";
-  replyLi.innerText = "Ответить";
+    const replyLi = document.createElement("li");
+    replyLi.className = "reply";
+    replyLi.innerText = "Ответить";
 
-  const commentActions = document.createElement("ul");
-  commentActions.className = "comment-actions";
-  commentActions.appendChild(complainLi);
-  commentActions.appendChild(replyLi);
+    const commentActions = document.createElement("ul");
+    commentActions.className = "comment-actions";
+    commentActions.appendChild(complainLi);
+    commentActions.appendChild(replyLi);
 
-  const bottomComment = document.createElement("div");
-  bottomComment.className = "bottom-comment";
-  bottomComment.appendChild(commentDate);
-  bottomComment.appendChild(commentActions);
+    const bottomComment = document.createElement("div");
+    bottomComment.className = "bottom-comment";
+    bottomComment.appendChild(commentDate);
+    bottomComment.appendChild(commentActions);
 
-  const commentBlock = document.createElement("div");
-  commentBlock.className = "comment-block";
-  commentBlock.appendChild(commentText);
-  commentBlock.appendChild(bottomComment);
+    const commentBlock = document.createElement("div");
+    commentBlock.className = "comment-block";
+    commentBlock.appendChild(commentText);
+    commentBlock.appendChild(bottomComment);
 
-  const commentWrap = document.createElement("div");
-  commentWrap.className = "comment-wrap";
-  commentWrap.appendChild(photo);
-  commentWrap.appendChild(commentBlock);
-  return commentWrap;
+    const commentWrap = document.createElement("div");
+    commentWrap.className = "comment-wrap";
+    commentWrap.appendChild(photo);
+    commentWrap.appendChild(commentBlock);
+    return commentWrap;
 }
 
 fetch("https://neto-api.herokuapp.com/comments")
-  .then(res => res.json())
-  .then(showComments);
+    .then(res => res.json())
+    .then(showComments);

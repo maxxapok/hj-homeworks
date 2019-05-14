@@ -4,7 +4,7 @@ window.editor.addEventListener('update', getData);
 
 
 function getData(event) {
-	const blob = event.canvas.toBlob( function(blob) { 
-		ws.send(blob);
-	});	
+    const blob = event.canvas.toBlob(function(blob) {
+        ws.send(blob);
+    });
 }
