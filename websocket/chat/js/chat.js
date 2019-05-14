@@ -10,7 +10,7 @@ const chat = document.querySelector('.chat'),
     messagePersonal = chat.querySelector('.message-personal'),
     messageInput = chat.querySelector('.message-input'),
     messageSubmit = chat.querySelector('.message-submit'),
-    const messageStatus1 = messageStatus.cloneNode(true);
+    messageStatus1 = messageStatus.cloneNode(true);
 
 // открываем соединение
 const connect = new WebSocket('wss://neto-api.herokuapp.com/chat');
